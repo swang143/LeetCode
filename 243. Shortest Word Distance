@@ -1,0 +1,61 @@
+public class Solution {
+    public int shortestDistance(String[] words, String word1, String word2) {
+        List<Integer> l1 = new ArrayList<>();
+        List<Integer> l2 = new ArrayList<>();
+        int distance = words.length;
+        int temp = 0;
+        for (int i = 0; i < words.length; i++) {
+            if (words[i].equals(word1)) {
+                l1.add(i);
+            }
+        else if (words[i].equals(word2)) {
+                l2.add(i);
+            }
+        }
+        
+        for (int j = 0; j < l1.size(); j++) {
+            for (int k = 0; k < l2.size(); k++) {
+                temp = Math.abs(l1.get(j) - l2.get(k));
+                if (temp < distance) {
+                    distance = temp;
+                }
+            }
+        }
+        return distance;
+    }
+}
+// Steps
+// 1. Store all indexes of word1 in ArrayList
+// 2. Store all indexes of word2 in ArrayLis
+// 3. Find the minimum difference of index(word1) and index(word2)
+
+// Optimize for Step3:
+public class Solution {
+        public int shortestDistance(String[] words, String word1, String word2) {
+            List<Integer> w1occ=new ArrayList<Integer>();
+            List<Integer> w2occ=new ArrayList<Integer>();
+            
+            for (int i=0; i<words.length; ++i){
+                if (words[i].equals(word1)){
+                    w1occ.add(i);
+                }
+                if (words[i].equals(word2)){
+                    w2occ.add(i);
+                }
+            }
+            
+            int min=words.length;
+            int p1=0;
+            int p2=0;
+            
+            // Below!!
+            while (p1<w1occ.size() && p2<w2occ.size()){
+                min=Math.min(Math.abs(w1occ.get(p1)-w2occ.get(p2)), min);
+                if (w1occ.get(p1)<w2occ.get(p2)){
+                    p1++;
+                } else 
+                    p2++;
+            }
+            return min;
+        }
+    }
