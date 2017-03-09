@@ -1,0 +1,39 @@
+public class Solution {
+    public int shortestWordDistance(String[] words, String word1, String word2) {
+        List<Integer> l1 = new ArrayList<>();
+        List<Integer> l2 = new ArrayList<>();
+        int distance = words.length;
+        int temp = 0;
+        
+        if (word1.equals(word2)) {
+            for (int i = 0; i < words.length; i++) {
+                if (words[i].equals(word1)) {
+                    l1.add(i);
+                }
+            }
+            for (int j = 0; j < l1.size() && j + 1 < l1.size(); j++) {
+                distance = Math.min(Math.abs(l1.get(j) - l1.get(j+1)), distance);
+            }
+        }
+        else {
+            for (int i = 0; i < words.length; i++) {
+                if (words[i].equals(word1)) {
+                    l1.add(i);
+                }
+                if (words[i].equals(word2)) {
+                    l2.add(i);
+                }
+            }
+        
+            for (int j = 0; j < l1.size(); j++) {
+                for (int k = 0; k < l2.size(); k++) {
+                    distance = Math.min(Math.abs(l1.get(j) - l2.get(k)), distance);
+                }
+            }
+        }
+        return distance;
+    }
+}
+
+// Divide into two conditions:
+// word1 and word2 are the same or not
