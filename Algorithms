@@ -1,0 +1,8 @@
+LinkedList
+
+147. Insertion Sort List
+Algorithm - O(1) space
+1. loop all nodes in a LinkedList
+2. for current node in LinkedList, loop through all nodes in Sub LinkedList
+3. if current node value < sub list node value; go to next node in Sub list
+4. insert between prev and prev.next nodes
