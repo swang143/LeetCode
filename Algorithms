@@ -11,4 +11,24 @@ Note:
 1. keep Next Node once enter the first while loop
 2. once find place to insert current node, setting current.next = pre.next removes current node from LinkedList, there ensures O(1) space
    because no new nodes created for insertion.
+   
+
+24. Swap Nodes in Pairs
+Algorithm - O(1) space
+From: 1->2->3->4
+To:   2->1->4->3
+
+1. while node1 and node2 are not null
+2. node1.next = node2.next
+3. node2.next = node1
+4. pre.next = node2
+(Store node2)
+
+OR:
+3. pre.next = node2;
+4. pre.next.next = node1
+(Store node1, node2)
+
+Note: be careful that node1, node2.next change during the process
+
  
