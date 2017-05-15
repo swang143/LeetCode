@@ -6,3 +6,9 @@ Algorithm - O(1) space
 2. for current node in LinkedList, loop through all nodes in Sub LinkedList
 3. if current node value < sub list node value; go to next node in Sub list
 4. insert between prev and prev.next nodes
+
+Note: 
+1. keep Next Node once enter the first while loop
+2. once find place to insert current node, setting current.next = pre.next removes current node from LinkedList, there ensures O(1) space
+   because no new nodes created for insertion.
+ 
