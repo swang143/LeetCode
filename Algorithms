@@ -31,4 +31,28 @@ OR:
 
 Note: be careful that node1, node2.next change during the process
 
+
+203. Remove Linked List Elements
+Algorithms - O(1) space
+1. while (pre.next != null) 
+2. if pre.next.val == val, remove pre.next node
+3. else pre = pre.next, shift to next node
+
+
+Reference:
+Here's an iterative solution without dummy head.
+First, we shift a head of a list while its' value equals to val.
+Then, we iterate through the nodes of the list checking if the next node's value equals to val and removing it if needed.
+
+public class Solution {
+    public ListNode removeElements(ListNode head, int val) {
+        while (head != null && head.val == val) head = head.next;
+        ListNode curr = head;
+        while (curr != null && curr.next != null)
+            if (curr.next.val == val) curr.next = curr.next.next;
+            else curr = curr.next;
+        return head;
+    }
+}
+
  
