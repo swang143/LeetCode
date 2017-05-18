@@ -60,3 +60,27 @@ for (each string in right children paths) {
 }
 return path;
 
+
+114. Flatten Binary Tree to Linked List
+         1
+        / \
+       2   5
+      / \   \
+     3   4   6
+     
+Result:
+   1
+    \
+     2
+      \
+       3
+        \
+         4
+          \
+           5
+            \
+             6
+Algorithm:
+1. Use an ArrayList to save preOrder transverse of binary tree using Recursive method
+2. For every node in arrayList, left child is null, right child is the next node in arrayList
+3. For the last node, both its left child and right child are null (Leaf node)
