@@ -174,3 +174,6 @@ public boolean isValidBST(TreeNode root) {
     }
     
 Optimized Solution:
+helper(node, low, up)   -> set min and max limit for node; if exceeds the limit, return false
+return helper(root.left, low, root.val) 
+    && helper(root.right, root.val, up);
