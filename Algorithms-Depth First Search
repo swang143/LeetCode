@@ -84,3 +84,21 @@ Algorithm:
 1. Use an ArrayList to save preOrder transverse of binary tree using Recursive method
 2. For every node in arrayList, left child is null, right child is the next node in arrayList
 3. For the last node, both its left child and right child are null (Leaf node)
+
+
+199. Binary Tree Right Side View
+   1            <---
+ /   \
+2     3         <---
+ \     \
+  5     4       <---
+  
+Return: [1, 3, 4].
+Optimized Algorithm:
+Every level will only have one node to be seen, and that is the rightmost node that is not null.
+Therefore the question is just find the rightmost not null node in every level.
+
+if (right children is not null and no other node has been inserted in current level)
+    then add into list;
+if (right children is null) 
+    then check the left children; 
