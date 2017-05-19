@@ -102,3 +102,21 @@ if (right children is not null and no other node has been inserted in current le
     then add into list;
 if (right children is null) 
     then check the left children; 
+
+
+111. Minimum Depth of Binary Tree
+Note: for node that has only 1 child, the other child is null. This kind of nodes are not a leaf, therefore distance from root to them\
+can be counted. Should eliminate this condition.
+
+The logic of the helper method:
+if (root == null) return Integer.MAX_VALUE;
+if (root is a leaf) return 1;
+return 1 + Math.min(helper(root.left), helper(root.right)); // recursive process
+
+Error example:  if you don't eliminate the case of nodes that has 1 null child, you'll get following error.
+Input:
+[1,2]
+Output:
+1
+Expected:
+2
