@@ -120,3 +120,57 @@ Output:
 1
 Expected:
 2
+
+
+98. Validate Binary Search Tree
+Given a binary tree, determine if it is a valid binary search tree (BST).
+
+Assume a BST is defined as follows:
+
+The left subtree of a node contains only nodes with keys less than the node's key.
+The right subtree of a node contains only nodes with keys greater than the node's key.
+Both the left and right subtrees must also be binary search trees.
+
+My Solution:
+Logic:
+For every node, find the largest value in its left subtree
+                find the smallest value in its right subtree
+if (MaxValue_left_subtree >= current_node) return false;
+if (MinValue_right_subtree <= current_node) return false;
+
+return helper(root.left) && helper(root.right);
+
+(recursive)
+
+The way that finds the largest value in left subtree is:
+  rightmost leaf of left child
+
+Find the smallest value in right subtree is:
+  leftmost left of right child
+
+Code:
+public boolean isValidBST(TreeNode root) {
+        if (root == null) return true;
+        
+        //find the largest value in the left subtree
+        TreeNode left = root.left;
+        if (left!= null) {
+            while(left.right != null) {
+                left = left.right;
+            }
+            if (left.val >= root.val)
+                return false;
+        }
+        
+        TreeNode right = root.right;
+        if (right != null) {
+            while (right.left != null) {
+                right = right.left;
+            }
+            if (right.val <= root.val)
+                return false;
+        }
+        return isValidBST(root.left) && isValidBST(root.right);
+    }
+    
+Optimized Solution:
