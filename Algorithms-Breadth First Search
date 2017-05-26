@@ -1,0 +1,18 @@
+101. Symmetric Tree
+Steps:
+(1) See if the tree is null
+(2) Initiate a queue(FIFO), push left child and right child into the queue
+(3) While queue is not empty (We still have nodes that are going to be compared), pop up the first two nodes
+    4 conditions here:
+      (1) Both are null                                             -- Continue
+      (2) One null and one not null                                 -- Return false
+      (3) Both NOT null -- Their values are not the same            -- Return false
+                        -- Their values are the same                -- Go to Step (4)
+
+(4) ORDER MATTERS
+    queue.offer(left.left);
+    queue.offer(right.right);
+    queue.offer(left.right);
+    queue.offer(right.left);
+    
+    In the same level, always push nth from the front and nth from the back into the queue at the same time.
