@@ -1,0 +1,22 @@
+279. Perfect Squares
+Given a positive integer n, find the least number of perfect square numbers (for example, 1, 4, 9, 16, ...) which sum to n.
+For example, given n = 12, return 3 because 12 = 4 + 4 + 4; given n = 13, return 2 because 13 = 4 + 9.
+
+For a given number, n, if it's not a square number, the following statement must be true:
+dp(n) = d(n - j * j) + 1
+
+which means it is the sum of another number and a square number
+And there might be multiply combinations, we should pick the least number
+Reverse back, why start from 1 to n, calculate the least square sum for each one and store it in an array, until n
+
+Algorithm:
+1. Initiate an array myArray[n+1], set each element within it to Integer.MAX_VALUE;
+2. loop Outer:
+   i: from i to n
+3. loop Inner:
+   j : from 1 to i + j * j <= n
+4. store minimum:
+   myArray[i + j * j] = min(myArray[i] + 1, myArray[i + j * j])
+5. return myArray[n]
+
+The two loops make sure the algorithm tranverse all numbers between 1 and n
