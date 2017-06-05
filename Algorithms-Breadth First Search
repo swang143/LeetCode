@@ -72,3 +72,42 @@ The Problem is:
 So, in one word, no matter what you use for level 2, you have to use stacks for following levels, 
 Therefore, use stacks for consistency. 
 Use stack1 for even levels, stack2 for odd levels. 
+
+
+301. Remove Invalid Parentheses
+Remove the minimum number of invalid parentheses in order to make the input string valid. Return all possible results.
+
+Note: The input string may contain letters other than the parentheses ( and ).
+
+Examples:
+"()())()" -> ["()()()", "(())()"]
+"(a)())()" -> ["(a)()()", "(a())()"]
+")(" -> [""]
+
+ENUMERATION, loops over all possible conditions before deleting certain numbers of '(' / ')'
+NOTICE that: It is possible that you may need to delete more than 1 '('/')'. If you are deleting the nth '('/')', it must come from the
+string that you have deleted (n-1) '('/')'s. Therefore, we can create a queue to store all the strings, while queue is not empty, poll 
+out a string each time, decide if it's a valid string, if yes, stop deleting more '('/')'.
+
+Algorithm:
+1. offer string into queue,
+2. while queue is not empty, 
+   (1) poll head of queue
+   (2) judge if current string is valid or not
+   (3) if it is valid, stop deleting from current string and other strings in queue
+   (4) if it is not valid, deleting one more ( or ) from current string
+             if no other such string has appeared, save it
+             (push it into queue and visied hash table)
+3. Finish looping, return result.
+
+
+
+
+
+
+
+
+
+
+
+
