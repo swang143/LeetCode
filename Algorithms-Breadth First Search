@@ -246,6 +246,29 @@ public class Solution {
     }
 }
 
+Algorithm:
+Since to loop over each point and find if they have access to oceans will throw a stack over flow exception,
+We focus on the edge points instead to see if we can step on any point from the edge.
+DFS, two visited array to record the accessibility for each ocean.
+
+for (int i = 0; i < m; i++) { // Loop over two VERTICAL edges
+    dfs(i, 0, pVisited);
+    dfs(i, n - 1, aVisited);
+}
+
+for (int j = 0; j < n; j++) {  // Loop over two HORIZONTAL edges
+    dfs(o, j, pVisited);
+    dfs(m - 1, j, aVisited); 
+}
+
+void dfs(i, j, boolean[][], int[][]) {
+    visited[i][j] = true;   // set current point to be visited;
+    for (int i = 0; i < 4; i++) {// go to 4 directions from current point (up, down, left, right)
+        if (new point still in matrix && unvisited && matrix[new point] > matrix[current point]) {
+            dfs(new point);
+        }
+}
+
 
 
 
