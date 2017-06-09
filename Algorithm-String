@@ -1,1 +1,11 @@
+12. Integer to Roman
+String[] romans = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+int[] values = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};  
+NOTE 
+1. 900, 400, 90, 40, 9, 4 ARE SPECIAL NUMBERS that are using special representation methods. 
+2. For a certain number, compare it with the values array, which has those nodes from large to smaller in decreasing order
 
+151. Reverse Words in a String
+spilit by space
+s.split(" ")
+s.equals() to compare string, != won't work
