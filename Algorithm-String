@@ -9,3 +9,30 @@ NOTE
 spilit by space
 s.split(" ")
 s.equals() to compare string, != won't work
+
+
+14. Longest Common Prefix
+Write a function to find the longest common prefix string amongst an array of strings.
+For example:
+{"a","a","b"} should give "" as there is nothing common in all the 3 strings.
+
+{"a", "a"} should give "a" as a is longest common prefix in all the strings.
+
+{"abca", "abc"} as abc
+
+{"ac", "ac", "a", "a"} as a.
+
+
+My thought:
+Take a Character each time, and compare among all strings in array.
+
+Top in Submission:
+Take the first string in array
+loop over all strings in array
+    if (current string doesn't include the first string as prefix)
+        then decrease 1 char at the end by using substring method until current string has the prefix;
+    go to next string;
+   
+My thought is keep increasing
+While we can also keep decreasing(This might be more efficient)
+        
