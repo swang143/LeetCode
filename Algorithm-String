@@ -22,7 +22,6 @@ For example:
 
 {"ac", "ac", "a", "a"} as a.
 
-
 My thought:
 Take a Character each time, and compare among all strings in array.
 
@@ -36,3 +35,22 @@ loop over all strings in array
 My thought is keep increasing
 While we can also keep decreasing(This might be more efficient)
         
+
+20. Valid Parentheses
+Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+The brackets must close in the correct order, "()" and "()[]{}" are all valid but "(]" and "([)]" are not.
+
+Stack:
+Loop over all characters within string:
+if (current char == '(')       push ')' into stack
+
+if (current char == '{')        push '}' into stack
+
+if (current char == '[')        push ']' into stack
+
+else current char is among one of the ')', '}', ']',
+if stack is empty, return false;
+if pop up top element and it is not equal to current char, return false;
+
+After finish looping all characters within string, check if stack is empty, if not return false; else return true;
