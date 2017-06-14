@@ -1,3 +1,55 @@
+General Logic about Backtracking:
+boolean Solve(Node n) {
+    if (n is a leaf node) {
+        if the leaf is a goal leaf, return true;
+        else return false;
+    
+    else {
+        for (each child c of n) {
+            if (Solve(c) is successful) return true;
+        }
+        return false;
+    }
+}
+
 17. Letter Combinations of a Phone Number
+
 39. Combination Sum
+
 40. Combination Sum II
+(Compare 40 / 39)
+
+
+39. Combination Sum
+Given a set of candidate numbers (C) (without duplicates) and a target number (T), find all unique combinations in C where the candidate numbers sums to T.
+
+The same repeated number may be chosen from C unlimited number of times.
+
+Note:
+All numbers (including target) will be positive integers.
+The solution set must not contain duplicate combinations.
+For example, given candidate set [2, 3, 6, 7] and target 7, 
+A solution set is: 
+[
+  [7],
+  [2, 2, 3]
+]
+
+NOTE
+1. Use int remain to indicate if it's a leaf node instead of using sum, which you might need to write extra function to calculate it 
+   for ArrayList. 
+
+void backtracking() {
+    if (remain < 0) // current sum > target
+        return; 
+    else if (remain == 0) // meet requirement, add to result set
+        result.add(new ArrayList<Integer>(current));
+        
+    else {
+        for (elements in candidates from start to end) {
+            current.add(element);
+            backtracking(current, i as new start, new remain) // only consider elements after i including i to avoid repeat
+            remove last element of current;
+        }
+    }
+}
