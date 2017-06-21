@@ -1,1 +1,62 @@
+3. Longest Substring Without Repeating Characters
 
+Given a string, find the length of the longest substring without repeating characters.
+
+Examples:
+Given "abcabcbb", the answer is "abc", which the length is 3.
+Given "bbbbb", the answer is "b", with the length of 1.
+Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
+
+Approach #1 Brute Force [Time Limit Exceeded]
+
+Intuition:
+Check all the substring one by one to see if it has no duplicate character.
+
+Approach #2 Sliding Window
+REFERENCE: https://leetcode.com/articles/longest-substring-without-repeating-characters/
+
+public class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        if (s == null || s.length() == 0) return 0;
+        
+        int longestLength = 1;
+        StringBuilder longestSubstring = new StringBuilder();
+        int sLength = s.length();
+        char[] sChar = s.toCharArray();
+        
+        for (int i = 0; i < sLength; i++) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(sChar[i]);
+            for (int j = i + 1; j < sLength; j++) {
+                sb.append(sChar[j]);
+
+                if (hasRepeatingChar(sb)) break;
+                
+                else {
+                    if (sb.length() >= longestLength) {
+                        longestLength = sb.length();
+                        longestSubstring = sb;
+                    }
+                }
+            }
+        }
+        
+        return longestLength;
+    }
+    
+    private boolean hasRepeatingChar(StringBuilder sb) {
+        if (sb == null || sb.length() == 0) return false;
+        
+        List<Character> list = new ArrayList<>();
+        for (int i = 0; i < sb.length(); i++) {
+            if (list.contains(sb.charAt(i))) {
+                return true;
+            }
+            else {
+                list.add(sb.charAt(i));
+            }
+        }
+        
+        return false;
+    }
+}
