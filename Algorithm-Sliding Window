@@ -60,3 +60,74 @@ public class Solution {
         return false;
     }
 }
+
+
+159. Longest Substring with At Most Two Distinct Characters
+Given a string, find the length of the longest substring T that contains at most 2 distinct characters.
+
+For example, Given s = “eceba”,
+T is "ece" which its length is 3.
+
+Algorithm:
+First try to use HashSet to store all the characters. 
+The problem is:
+For String "abac", before char c: the elements stored in set is <'a', 'b'>.
+If you delete 'a', you are considering 'b' as the only other element in the substring, which returns a length of 3, which is not
+correct since there is still one 'a' after 'b'.
+
+Therefore, we need to store the updated index for each element by implementing a HashMap.
+#1: { a: 1}
+#2: { a: 1; b: 2}
+#3: { a: 3; b: 2}
+#4: remove the leftmost element in hashmap.
+Optimised way to remove leftmost element in hashmap.
+for (int i : map.values()) {
+    leftmost = Math.min(i, leftmost);
+}
+// find the least value in values(that is the leftmost index)
+char left = s.charAt(leftmost); // which is more elegant than my algorithm to find the right char to delete.
+map.remove(left);
+
+public class Solution {
+    public int lengthOfLongestSubstringTwoDistinct(String s) {
+        int n = s.length();
+        
+        Map<Character, Integer> map = new HashMap<>();
+        int i = 0;
+        int j = 0;
+        int ans = 0;
+        
+        while(i < n && j < n) {
+            if (map.containsKey(s.charAt(j))) {
+                map.put(s.charAt(j), j + 1);
+                j++;
+                ans = Math.max(j - i, ans);
+            }
+            else {
+                if (map.size() < 2) {
+                    map.put(s.charAt(j), j + 1);
+                    j++;
+                    ans = Math.max(j - i, ans);
+                }
+                else {
+                    int value = -1;
+                    char temp = 0;
+                    for (char c : map.keySet()) {
+                        if (value == -1) {
+                            temp = c;
+                            value = map.get(c);
+                        }
+                        else if (map.get(c) > value) {
+                            i = map.remove(temp);
+                        }
+                        else {
+                            i = map.remove(c);
+                        }
+                    }
+                    
+                }
+            }
+        }
+        return ans;
+    }
+}
