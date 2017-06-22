@@ -38,6 +38,35 @@ REFERENCE:
 https://leetcode.com/articles/longest-palindromic-substring/
 https://github.com/tiancaiCC/LeetCode/blob/master/5.%20Longest%20Palindromic%20Substring.md
 
+Approach #1 (Brute Force) [Time Limit Exceeded]
+    public String longestPalindrome(String s) {
+        int n = s.length();
+        int  max = 0;
+        int imax = 0;
+        int jmax = 0;
+        
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < n; j++) {
+                if (isPalidrome(s, i, j) && (j - i + 1) > max) {
+                    imax = i;
+                    jmax = j;
+                    max = j - i + 1;
+                }
+            }
+        }
+        
+        return s.substring(imax, jmax + 1);
+    }
+    
+    private boolean isPalidrome(String s, int start, int end) {
+        for (int i = 0; i <= (end - start)/2; i++) {
+            if (s.charAt(start + i) != s.charAt(end - i)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 
 
 
