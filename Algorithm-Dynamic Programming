@@ -38,7 +38,30 @@ REFERENCE:
 https://leetcode.com/articles/longest-palindromic-substring/
 https://github.com/tiancaiCC/LeetCode/blob/master/5.%20Longest%20Palindromic%20Substring.md
 
-Approach #1 (Brute Force) [Time Limit Exceeded]
+Approach #1 (Dynamic Programming)
+The most important thing to notice is that:
+If substring Si, j is a palidrome and Character at i-1 == Character at j+1; 
+Then substring Si-1, j+1 is a palidrome too.
+
+Or in another format,
+Si, j is a palidrome if:
+Si+1, j-1 is a palidrome and Chari == Charj.
+
+Use Dynamic programming,
+Initialize boolean array dp;
+(1) dp[i][i] = true;
+(2) if Char i == Char i+1, dp[i][i+1] = true;
+
+Initializatio finished.
+
+From length = 3 to length = n(length of string):
+if (d[i+1][j-1] == true && s.charAt(i) == s.charAt(j)) {
+   dp[i][j] = true;
+   maxlength = current length;
+   maxsubstring = current substring;
+}
+
+Approach #2 (Brute Force) [Time Limit Exceeded]
     public String longestPalindrome(String s) {
         int n = s.length();
         int  max = 0;
