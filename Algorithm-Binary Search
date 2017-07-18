@@ -48,3 +48,32 @@ The array may contain duplicates.
 
 NOTE:
 The most important thing is to compare mid and rightmost value in the array.
+
+
+240. Search a 2D Matrix II
+My thought:
+While (not exceeds row limit) {
+    if (target in the range of current row) {
+        // binary search to find target
+        if (found) return true;
+        if (not found) continue;
+    }
+    else if (target < first element of current row) {
+        return false;
+    }
+    // Other condition if (target > last element of current row) then go to next line;
+    // Don't need to write out this contion 
+}
+return false;
+// If target not found after loop exiting, then return false;
+
+Example thought:
+THE MOST IMPORTANT POINT IS WHERE HE STARTS
+We start search the matrix from top right corner, initialize the current position to top right corner, 
+(1) if the target is greater than the value in current position, then the target can not be in entire row of current position 
+because the row is sorted, 
+
+(2) if the target is less than the value in current position, then the target can not in the entire column 
+because the column is sorted too. 
+
+We can rule out one row or one column each time, so the time complexity is O(m+n).
