@@ -129,3 +129,25 @@ public:
         return matrix[r / m][r % m] == target;
     }
 };
+
+
+162. Find Peak Element
+A peak element is an element that is greater than its neighbors.
+Given an input array where num[i] ≠ num[i+1], find a peak element and return its index.
+
+1. Approach #1 Linear Scan
+Time Complexity: O(n). We traverse the numsnums array of size nn once only.
+Space Complexity: O(1). Constant extra space is used.
+
+In this approach, we make use of the fact that two consecutive numbers nums[j]nums[j] and nums[j + 1]nums[j+1] are never equal. 
+Thus, we can traverse over the numsnums array starting from the beginning. 
+Whenever, we find a number nums[i]nums[i], we only need to check if it is larger than the next number nums[i+1]nums[i+1] 
+for determining if nums[i]nums[i] is the peak element.
+
+2. Approach #2 Recursive Binary Search 
+(1) find the middle
+(2) compare middle with next element
+    -- if middle < next, ascending trend, peak should be on the right side, NOT including middle
+    -- if middle > next, descending trend, peak should be on the left side, including middle
+(3) continue until left == right
+3. Approach #3 Iterative Binary Search
