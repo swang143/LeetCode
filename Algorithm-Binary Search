@@ -151,3 +151,9 @@ for determining if nums[i]nums[i] is the peak element.
     -- if middle > next, descending trend, peak should be on the left side, including middle
 (3) continue until left == right
 3. Approach #3 Iterative Binary Search
+
+
+349. Intersection of Two Arrays
+Complete Solution in this reference:
+http://www.cnblogs.com/grandyang/p/5507129.html
+
